@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ESP32 Web Server</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="data:,">
+    <style>
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-on {
+            background-color: green;
+            color: white;
+        }
+
+        .btn-off {
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Datos del Sensor</h1>
+    <h2>distance:</h2>
+    <p>%f</p>
+
+
+    <button id="encender" class="btn btn-on" onclick="controlMotor('on')">Push</button>
+  
+    <script>
+        function controlMotor(accion) {
+            fetch('/?motor=' + accion)
+                .then(response => console.log(response))
+                .catch(error => console.error(error));
+        }
+    </script>
+</body>
+
+</html>
